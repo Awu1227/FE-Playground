@@ -48,15 +48,21 @@
 
     footer {
       text-align: center;
-      clear: both;
       background-color: #666;
+    }
+
+    /*手写clearfix*/
+    .clearfix:after {
+      content: '';
+      display: table;
+      clear: both
     }
   </style>
 </head>
 
 <body>
   <header>header</header>
-  <div class="container">
+  <div class="container clearfix">
     <div class=" column center">center</div>
     <div class=" column left">left</div>
     <div class=" column right">right</div>
