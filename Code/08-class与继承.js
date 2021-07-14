@@ -52,3 +52,11 @@ console.log(chengzi.name)
 console.log(dinglaoshi.name)
 chengzi.sayHi()
 dinglaoshi.teach()
+dinglaoshi.eat()
+// class实际上是函数，可见它是一个语法糖
+console.log(typeof People) // function
+console.log(typeof Student) // function
+// 隐式原型和显示原型
+console.log(chengzi.__proto__) // People{}
+console.log(Student.prototype) // People{}
+console.log(chengzi.__proto__ === Student.prototype) // true
