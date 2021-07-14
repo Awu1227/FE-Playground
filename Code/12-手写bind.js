@@ -13,6 +13,7 @@ Function.prototype.bind1 = function () {
   const t = args.shift()
   //fn1.bind(...)中的bind
   const self = this
+  // 返回一个函数
   return function () {
     return self.apply(t, args)
   }
