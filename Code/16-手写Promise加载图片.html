@@ -35,7 +35,15 @@
         div.appendChild(img)
       })
     }
-    imgOnload(url)
+    const p = imgOnload(url)
+    p.then(img => {
+      console.log(img.width);
+      return img
+    }).then(img => {
+      console.log(img.height);
+    }).catch(ex => {
+      console.error(ex);
+    })
   </script>
 </body>
 
