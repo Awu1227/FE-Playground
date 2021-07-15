@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 300px;
+      height: 300px;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    const url =
+      "https://sf6-ttcdn-tos.pstatp.com/img/user-avatar/e4e10f12833f556cccb20108e04932aa~300x300.image"
+    function imgOnload(src) {
+      return new Promise((resolve, reject) => {
+        const div = document.querySelector('div')
+        const img = document.createElement("img")
+        img.onload = () => {
+          resolve(img)
+        }
+        img.onerror = () => {
+          const err = new Error(`图片加载失败`)
+          reject(err)
+        }
+        img.src = src
+        div.appendChild(img)
+      })
+    }
+    imgOnload(url)
+  </script>
+</body>
+
+</html>
