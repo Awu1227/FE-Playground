@@ -46,7 +46,7 @@ class Teacher extends People {
     console.log(`我是${this.name},我教授的学科是${this.major}`)
   }
 }
-let chengzi = new Student("橙子", 18)
+let chengzi = new Student("夏洛", 100)
 let dinglaoshi = new Teacher("王老师", "数学")
 console.log(chengzi.name)
 console.log(dinglaoshi.name)
