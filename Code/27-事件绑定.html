@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn1">btn按钮</button>
+  <script>
+    // 通用的绑定函数
+    function bindEvent(elem, type, fn) {
+      elem.addEventListener(type, fn)
+    }
+    const btn = document.getElementById('btn1')
+    bindEvent(btn, 'click', e => {
+      e.preventDefault()// 组织默认行为
+      alert('clicked')
+    })
+  </script>
+</body>
+
+</html>
