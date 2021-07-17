@@ -36,7 +36,7 @@
         }, delay)
       }
     }
-    input.addEventListener('keyup', debounce(() => {
+    input.addEventListener('keyup', debounce(function () {
       console.log(input.value);
     }, 600))
   </script>
