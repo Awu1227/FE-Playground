@@ -12,7 +12,7 @@ obj2.name = "柚子"
 console.log(obj1.name)
 function deepClone(obj) {
   // obj是null或者不是对象和数组直接返回
-  if (typeof obj !== Object || obj == null) {
+  if (typeof obj !== 'object'|| obj == null) {
     return obj
   }
   // 初始化返回结果
