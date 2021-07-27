@@ -19,4 +19,4 @@ Function.prototype.bind1 = function () {
   }
 }
 const fn3 = fn1.bind1({ x: 100 }, 10, 20, 30)
-fn3()
+console.log(fn3());
