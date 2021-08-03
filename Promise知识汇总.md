@@ -20,7 +20,46 @@ JS中分为两种任务类型：宏任务和微任务。微任务执行会优先
 
 ## 4、阐述Promsie的一些静态方法。
 Promise.all、Promise.race、Promise.resolve、Promsie.reject等。
-
+### Promise.all的用法
+> 谁跑的慢，以谁为准执行回调。all接收一个数组参数，里面的值最终都算返回Promise 对象。
+```js
+// Promise的all 方法提供了并行执行异步操作的能力，并且在所有异步操作执行完后才执行回调
+let Promise1 = new Promise((resolve,reject)=>{})
+let Promise2 = new Promise((resolve,reject)=>{})
+let Promise3 = new Promise((resolve,reject)=>{})
+let p = Promsie.all([Promise1,Promise2,Promise3])
+p
+.then(()=>console.log('三个都成功'))
+.catch(()=>console.log('失败'))
+```
+### Promise.race的用法
+> 谁跑的快，以谁为准执行回调。
+```js
+// race的使用场景：比如我们可以用race 给某个异步请求设置超时时间，并且在超时后执行相应的操作，代码如下：
+// 请求某个图片资源
+function requestImg(){
+    let p = new Promise((resolve,reject)=>{
+        let img = new Image();
+        img.onload = function() {
+            resolve(img);
+        }
+        img.src = '图片的路径'
+    })；
+    return p;
+}
+// 延时函数，用于给请求计时
+function timeout(){
+    let p = new Promise((resolve,reject)=>{
+       setTimeout(()=>{
+           reject('图片请求超时');
+       },5000)
+    })；
+    return p;
+}
+Promise.race([requestImg(),timeout()])
+.then(data=>console.log(data))
+.catch(err=>console.log(err))
+```
 ## 5、Promise存在哪些缺点？
 - 1、无法取消Promise，一旦新建它就会立即执行，无法中途取消。
 - 2、如果不设置回调函数，Promise内部抛出的错误，不会反应到外部。
