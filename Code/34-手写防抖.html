@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>防抖</title>
+  <style>
+    span{
+      background: rgb(39, 214, 214);
+    }
+  </style>
+</head>
+<body>
+  <span>防抖案例</span>
+  <input type="text">
+  <script>
+    const input = document.querySelector('input')
+    // let timer = null
+    // input.addEventListener('keyup',function(){
+    //   if(timer) {
+    //     clearTimeout(timer)
+    //   }
+    //   timer = setTimeout(()=>{
+    //     // 模拟ajax请求
+    //     console.log(input.value);
+    //     // 清空定时器
+    //     timer = null
+    //   },500)
+    // })
+    // 封装防抖函数
+    function debounce(fn,delay = 500){
+      let timer = null
+      return function(){
+        if(timer) {
+          clearTimeout(timer)
+        }
+        timer = setTimeout(()=>{
+          fn.apply(fn,arguments)
+          timer = null
+        },delay)
+      }
+    }
+    input.addEventListener('keyup',debounce(()=>{
+      console.log(input.value);
+    }),600)
+  </script>
+</body>
+</html>
