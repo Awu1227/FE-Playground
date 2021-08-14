@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>重写圣杯布局</title>
+  <style>
+    body {
+      min-width: 600px;
+    }
+    header,footer {
+      text-align: center;
+      height: 20px;
+      background: rgb(236, 176, 85);
+    }
+    .container{
+      padding-left: 200px;
+      padding-right: 150px;
+    }
+    .column{
+      float: left;
+    }
+    .center{
+      width: 100%;
+      background: rgb(199, 42, 173);
+    }
+    .left{
+      position: relative;
+      right: 200px;
+      margin-left: -100%;
+      width: 200px;
+      background: rgb(75, 212, 109);
+    }
+    .right{
+      margin-right: -150px;
+      width: 150px;
+      background: rgb(56, 164, 207);
+    }
+    .clearfix:after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <header>我是header</header>
+  <div class="container clearfix">
+    <div class="center column">center</div>
+    <div class="left column">left</div>
+    <div class="right column">right</div>
+  </div>
+  <footer>我是footer</footer>
+</body>
+</html>
