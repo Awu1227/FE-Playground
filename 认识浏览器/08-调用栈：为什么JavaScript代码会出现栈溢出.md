@@ -47,21 +47,32 @@ return  a+result+d
 addAll(3,6)
 ```
 1. **创建全局上下文，并将其压入栈底**。如下图所示：
+![image](https://user-images.githubusercontent.com/72426886/132270187-e8f220ad-83b3-4cad-a902-1deeb65c0d60.png)
 
 
 从图中你也可以看出，变量a、函数add和addAll都保存到了全局上下文的变量环境对象中。
 
 全局执行上下文压入到调用栈后，JavaScript引擎便开始执行全局代码了。首先会执行a=2的赋值操作，执行该语句会将全局上下文变量环境中a的值设置为2。设置后的全局上下文的状态如下图所示：
+![image](https://user-images.githubusercontent.com/72426886/132270209-a539b657-5b35-47bd-ab3a-62ee4e6ac865.png)
 
 
 2. **调用addAll函数**。
 
 当调用该函数时，JavaScript引擎会编译该函数，并为其创建一个执行上下文，最后还将该函数的执行上下文压入栈中，如下图所示：
+![image](https://user-images.githubusercontent.com/72426886/132270221-482e3834-f09f-456e-a12d-ebf53b2b6768.png)
 
 
 addAll函数的执行上下文创建好之后，便进入了函数代码的执行阶段了，先执行的是d=10的赋值操作，执行语句会将addAll函数执行上下文中的d由undefined变成10。
 
 3. 当执行到add函数调用语句时，同样会为其创建执行上下文，并将其压入到调用栈中，如下图所示：
 
+![image](https://user-images.githubusercontent.com/72426886/132270234-7714773f-2245-4528-8bd7-61de1df8111a.png)
 
+当 add 函数返回时，该函数的执行上下文就会从栈顶弹出，并将 result 的值设置为 add 函数的返回值，也就是 9。如下图所示：
 
+![image](https://user-images.githubusercontent.com/72426886/132270263-53b9a290-2c99-4611-9753-253e7347c35b.png)
+
+紧接着 addAll 执行最后一个相加操作后并返回，addAll 的执行上下文也会从栈顶部弹出，此时调用栈中就只剩下全局上下文了。最终如下图所示：
+
+![image](https://user-images.githubusercontent.com/72426886/132270289-28d244f4-ccc6-4fbe-9b72-0e2012733f08.png)
+至此，整个JavaScript流程就执行结束了。
