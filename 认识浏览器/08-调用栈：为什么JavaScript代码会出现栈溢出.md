@@ -27,3 +27,5 @@ add()
 2. 从全局执行上下文中，取出add函数代码
 3. 其次，对add函数的这段代码进行编译，并创建该函数的执行上下文和可执行代码
 4. 最后，执行代码，输出结果
+
+![image](https://user-images.githubusercontent.com/72426886/132269395-04ef0fe7-d776-469c-bf79-3edd5147fcc1.png)
