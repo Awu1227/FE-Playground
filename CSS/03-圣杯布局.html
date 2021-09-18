@@ -1,73 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>03-圣杯布局</title>
   <style>
-    body {
+    body{
       min-width: 600px;
     }
-
-    header {
+    header{
       text-align: center;
-      height: 20px;
-      background-color: rgb(207, 50, 50);
+      background: blue;
     }
-
-    .column {
-      float: left;
-    }
-
-    .center {
-      width: 100%;
-      background-color: skyblue;
-    }
-
-    .container {
+    .container{
       padding-left: 200px;
       padding-right: 150px;
     }
-
-    .left {
+    .column{
+      float: left;
+    }
+    .left{
       position: relative;
       right: 200px;
-      background-color: lightgreen;
       width: 200px;
+      background: blueviolet;
       margin-left: -100%;
     }
-
-    .right {
-      background-color: lightyellow;
+    .center{
+      width: 100%;
+      background: orange;
+    }
+    .right{
       width: 150px;
+      background: red;
       margin-right: -150px;
-      /* right没有宽度了，所以他就不占地方了所以就跑到上面去了  */
     }
-
-    footer {
+    footer{
       text-align: center;
-      background-color: #666;
+      background: lightgreen;
     }
-
-    /*手写clearfix*/
-    .clearfix:after {
+    .clearfix:after{
       content: '';
       display: table;
-      clear: both
+      clear: both;
     }
   </style>
 </head>
-
 <body>
   <header>header</header>
   <div class="container clearfix">
-    <div class=" column center">center</div>
-    <div class=" column left">left</div>
-    <div class=" column right">right</div>
+    <div class="column center">center</div>
+    <div class="column left">left</div>
+    <div class="column right">right</div>
   </div>
   <footer>footer</footer>
 </body>
-
 </html>
