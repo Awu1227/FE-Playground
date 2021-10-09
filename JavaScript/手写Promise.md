@@ -5,7 +5,7 @@
 - API .resolve .reject .all .race
 
 ```js
-const p1 = MyPromise((resolve, reject) => {
+const p1 = new MyPromise((resolve, reject) => {
     resolve(100)
     // setTimeout(()=>{
     //   resolve(100)
