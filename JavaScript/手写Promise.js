@@ -87,6 +87,55 @@ class MyPromise {
     return this.then(null, fn)
   }
 }
+
+// 静态API实现
+MyPromise.resolve = function (value) {
+  return new MyPromise((resolve, reject) => resolve(value))
+}
+
+MyPromise.reject = function (reason) {
+  return new MyPromise((resolve, reject) => reject(reason))
+}
+
+MyPromise.all = function (promiseList = []) {
+  const p1 = new MyPromise((resolve, reject) => {
+    const result = [] // 存储promiseList所有的结果
+    const length = promiseList.length
+    let resolveCount = 0
+
+    promiseList.forEach(p => {
+      p.then(data => {
+        result.push(data)
+        // resolveCount 必须在then里面做++
+        resolveCount++
+        if (resolveCount === length) {
+          resolve(result)
+        }
+      }).catch(err => {
+        reject(err)
+      })
+    })
+  })
+  return p1
+}
+
+MyPromise.race = function (promiseList = []) {
+  let resolved = false // 标记
+  const p1 = new MyPromise((resolve, reject) => {
+    promiseList.forEach(p => {
+      p.then(data => {
+        if (!resolved) {
+          resolve(data)
+          resolved = true
+        }
+      }).catch(err => {
+        reject(err)
+      })
+    })
+  })
+  return p1
+}
+// 测试
 const p1 = new MyPromise((resolve, reject) => {
   resolve(100)
   // setTimeout(()=>{
@@ -100,5 +149,11 @@ return data + 1
   console.log('data2=>',data);
 return data + 2
 }).catch(err => {
-console.error(err)
+console.error(error)
 })
+const p2 = MyPromise.resolve(200)
+const p3 = MyPromise.reject('错误信息是...')
+const p4 = MyPromise.all([p1,p2]) // 传入promise数组，等待所有的都fulfilled之后，返回新的promise,包含前面所有的结果
+p4.then(data => console.log(data))
+const p5 = MyPromise.race([p1, p2]) // 传入promise数组，只要有一个fulfilled即可返回
+console.log(p5);
