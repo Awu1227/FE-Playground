@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "commitizen": "^4.2.4",
+    "cz-customizable": "^6.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    }
+  }
+}
