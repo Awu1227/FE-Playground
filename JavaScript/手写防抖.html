@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>防抖</p>
+<input type="text">
+<script>
+  // 防抖
+  function debounce(fn, delay = 500) {
+    let timer
+    return function() {
+      const args = arguments
+      if (timer) {
+        clearTimeout(timer)
+      }
+      timer = setTimeout(() => {
+          fn.apply(this, args)
+        }, delay)
+    }
+  }
+  const input = document.querySelector('input')
+  input.addEventListener('keyup',debounce(()=>{
+    console.log(input.value);
+  }))
+</script>
+</body>
+</html>
