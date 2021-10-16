@@ -12,14 +12,16 @@
 <script>
   // 防抖
   function debounce(fn, delay = 500) {
-    let timer
+    if (!fn instanceof Function) {
+      throw new TypeError("Expected a function")
+    }
+    let timer = null
     return function() {
-      const args = arguments
       if (timer) {
         clearTimeout(timer)
       }
       timer = setTimeout(() => {
-          fn.apply(this, args)
+          fn.apply(this, arguments)
         }, delay)
     }
   }
