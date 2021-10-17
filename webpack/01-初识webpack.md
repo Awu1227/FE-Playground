@@ -14,7 +14,7 @@
 - 配置灵活和插件化扩展
 - 官方更新迭代速度快
 
-# 四、初始webpack
+# 四、初识webpack
 
 ## 4.1 配置文件名称
 webpack默认配置文件名称：**webpack.config.js**
