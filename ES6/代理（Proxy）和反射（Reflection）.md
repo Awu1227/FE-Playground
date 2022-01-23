@@ -162,3 +162,33 @@ console.log(result2);
 ```
 
 这段代码与 has 陷阱的示例非常相似，deleteProperty 陷阱检查 key 是否为“value”，如果是的话返回 false，否则调用 Reflect.deleteProperty()方法来使用默认行为。`如果你希望保护属性不被删除，而且在严格模式不抛出错误，那么这个方法非常实用。`
+
+# 8.原型代理陷阱
+
+> 通过代理中的 setPrototypeOf 陷阱和 getPrototypeOf()陷阱可以拦截这两个方法的执行过程，在这两种情况下，Object 上的方法会调用代理的同名陷阱改变方法的行为。
+
+## 原型代理陷阱的运行机制
+
+原型代理陷阱有一些限制。首先，getPrototypeOf 陷阱必须返回对象或 null，只要返回值必将导致运行时错误，返回值检查可以确保 Object.getPrototypeOf()返回的总是预期的值。
+
+```js
+let target = {};
+let proxy = new Proxy(target, {
+  getPrototypeOf(trapTarget) {
+    return Reflect.getPrototypeOf(trapTarget);
+  },
+  setPrototypeOf(trapTarget, proto) {
+    return Reflect.setPrototypeOf(trapTarget, proto);
+  },
+});
+
+let targetProto = Object.getPrototypeOf(target);
+let proxyProto = Object.getPrototypeOf(proxy);
+
+console.log(targetProto === Object.prototype); // true
+console.log(proxyProto === Object.prototype); // true
+```
+
+## 为什么有两组方法？
+
+Object.getPrototypeOf()和 Object.setPrototypeOf()是高级操作，创建伊始便是给开发者使用的。而 Reflect.getPrototypeOf()方法和 Reflect.setPrototypeOf()方法则是底层操作，其赋予开发者可以访问之前只在内部操作的[[GetPrototypeOf]]和[[SetPrototypeOf]]的权限。
