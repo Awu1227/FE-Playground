@@ -19,3 +19,5 @@ const handleLogin = async () => {
   return info;
 };
 handleLogin().then((info) => console.log(info));
+a = void 0;
+console.log(a);
