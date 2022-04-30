@@ -42,3 +42,52 @@ function foo(p1,p2,p3) {
 foo(1,2);
 ```
 
+### 2. Null类型
+
+> Null类型只有一个唯一的字面值null，表示一个空指针对象。
+>
+> 3种常见场景：
+
+1. 一般情况下，如果声明的变量是为了以后保存某个值，则应该在声明时就将其赋值为null。
+
+```js
+var returnObj = null;
+function foo() {
+    return {
+        name: "Orange"
+    };
+}
+returnObj = foo();
+```
+
+2. JavaScript在获取DOM元素时，如果没有获取到指定的元素对象，就会返回“null”。
+
+```js
+document.querySelector("#id");
+```
+
+3. 使用正则表达式进行捕获时，如果没有捕获结果，就会返回“null”.
+
+```js
+"test".match(/a);
+```
+
+### 3. Undefined和Null两种类型的异同
+
+1. 相同点
+   - 两者在转换为Boolean类型的值时，都会转换为false。
+   - Undefined类型派生自Null类型，所以在非严格相等的情况下，两者是相等的。
+
+2. 不同点
+
+   - null是JavaScript中的关键字，而undefined是JavaScript中的一个全局变量，即挂载在window对象上的一个变量。
+   - 在使用typeof运算符检测时，Undefined类型的值会返回“undefined”,而Null类型的值会返回“object”。
+   - 通过call调用toString()函数时，Undefined类型的值会返回“[object Undefined]”，而Null类型的值会返回“[object Null]”。
+
+   ```js
+   Object.prototype.toString.call(undefined); // [object Undefined]
+   Object.prototype.toString.call(undefined); // [object Null]
+   ```
+
+   - 在需要进行字符串类型的转换时，null会转换为字符串“null”，而undefined会转换为字符串“undefined”。
+   - 在进行数值转换时，undefined会转换为NaN,null会转换为0。
