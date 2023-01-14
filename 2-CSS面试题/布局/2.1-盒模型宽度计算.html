@@ -1,0 +1,37 @@
+<head>
+	<title>盒模型宽度计算</title>
+	<style>
+		.box1 {
+			width: 100px;
+			height: 100px;
+			padding: 10px;
+			border: 1px solid #000;
+			margin: 10px;
+			background: red;
+		}
+
+		.box2 {
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			padding: 10px;
+			border: 1px solid #000;
+			margin: 10px;
+			background: red;
+		}
+	</style>
+</head>
+
+<body>
+	<p>请问box1的offsetwidth是多少？</p>
+	<div class="box1">box1-标准盒</div>
+	<p>请问box2的offsetwidth是多少？</p>
+	<div class="box2">box2-怪异盒</div>
+	<script>
+		const box1 = document.querySelector('.box1')
+		const box2 = document.querySelector('.box2')
+
+		console.log(`box1的offsetWidth为：${box1.offsetWidth}px`);
+		console.log(`box2的offsetWidth为：${box2.offsetWidth}px`);
+	</script>
+</body>
