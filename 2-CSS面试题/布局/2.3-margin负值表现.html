@@ -1,0 +1,81 @@
+<head>
+  <title>margin负值表现</title>
+  <style>
+    .example {
+      overflow: hidden;
+      background-color: aliceblue;
+      margin-bottom: 10px;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+    }
+
+    .box1,
+    .box2,
+    .box5,
+    .box6 {
+      float: left;
+    }
+
+    .box1,
+    .box3,
+    .box5,
+    .box7 {
+      border: 1px solid red;
+    }
+
+    .box2,
+    .box4,
+    .box6,
+    .box8 {
+      border: 1px solid blue;
+    }
+
+    .box2 {
+      margin-left: -50px;
+    }
+
+
+    .box4 {
+      margin-top: -50px;
+    }
+
+    .box5 {
+      margin-right: -50px;
+    }
+
+    .box7 {
+      margin-bottom: -50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="example">
+    <h3>margin-left负值</h3>
+    <div class="box box1"></div>
+    <div class="box box2">style</div>
+  </div>
+  <div class="example">
+    <h3>margin-top负值</h3>
+    <div class="box box3"></div>
+    <div class="box box4">style</div>
+  </div>
+  <div class="example">
+    <h3>margin-right负值</h3>
+    <div class="box box5">style</div>
+    <div class="box box6"></div>
+  </div>
+  <div class="example">
+    <h3>margin-bottom负值</h3>
+    <div class="box box7">style</div>
+    <div class="box box8"></div>
+  </div>
+  <ul>
+    <li>margin-top,margin-left负值，元素向上，向左移动</li>
+    <li>margin-right负值，自身不动，右侧元素左移</li>
+    <li>margin-bottom负值，自身不动，下方元素上移</li>
+  </ul>
+</body>
