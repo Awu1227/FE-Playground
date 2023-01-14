@@ -1,0 +1,39 @@
+<head>
+  <title>圣杯布局</title>
+  <style>
+    .container {
+      height: 400px;
+      padding-left: 200px;
+      padding-right: 150px;
+    }
+
+    .left {
+      float: left;
+      width: 200px;
+      height: 100%;
+      margin-left: -200px;
+      background: blueviolet;
+    }
+
+    .right {
+      float: right;
+      width: 150px;
+      height: 100%;
+      margin-right: -150px;
+      background: red;
+    }
+
+    .center {
+      height: 100%;
+      background: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container clearfix">
+    <div class="left">left</div>
+    <div class="right">right</div>
+    <div class="center">center</div>
+  </div>
+</body>
