@@ -1,0 +1,58 @@
+<head>
+  <title>响应式rem</title>
+  <style>
+    div {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>
+    rem就是根元素字体大小
+  </h3>
+  <em>尝试改变浏览器窗口大小</em>
+  <div style="font-size: 0.4rem; width: 1rem;">rem1</div>
+  <div style="font-size: 0.6rem; width: 2rem;">rem2</div>
+  <div style="font-size: 0.8rem; width: 4rem;">rem3</div>
+  <hr>
+  <code>
+    function remSize() {
+      let deviceWidth = document.documentElement.clientWidth || window.innerWidth;
+      if (deviceWidth > 750) {
+        deviceWidth = 750;
+      }
+      if (deviceWidth < 320) {
+        deviceWidth = 320;
+      }
+      document.documentElement.style.fontSize = `${deviceWidth / 7.5}px`;
+      document.querySelector("body").style.fontSize = "0.3rem";
+    }
+
+    remSize();
+
+    window.onresize = function () {
+      remSize();
+    };
+    </code>
+</body>
+<script>
+  function remSize() {
+    let deviceWidth = document.documentElement.clientWidth || window.innerWidth;
+    if (deviceWidth > 750) {
+      deviceWidth = 750;
+    }
+    if (deviceWidth < 320) {
+      deviceWidth = 320;
+    }
+    document.documentElement.style.fontSize = `${deviceWidth / 7.5}px`;
+    document.querySelector("body").style.fontSize = "0.3rem";
+  }
+
+  remSize();
+
+  window.onresize = function () {
+    remSize();
+  };
+</script>
+</body>
