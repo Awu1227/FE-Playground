@@ -1,0 +1,27 @@
+<head>
+  <title>line-height继承问题</title>
+  <style>
+    body {
+      font-size: 20px;
+      line-height: 200%;
+    }
+
+    p {
+      background-color: #ccc;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>
+    请问p标签line-height是多少？
+  </h3>
+  <p>这是一行文字</p>
+  <hr>
+  <ul>
+    <li>写具体数值，如30px，则继承该值</li>
+    <li>写具体比例，如1.5，则继承该值</li>
+    <li>写百分比，如200%，则继承计算出来的值</li>
+  </ul>
+</body>
