@@ -1,0 +1,40 @@
+<head>
+  <title>05-flex布局</title>
+  <style>
+    .box {
+      display: flex;
+      justify-content: space-between;
+      margin: 100px auto;
+      width: 100px;
+      height: 100px;
+      border-radius: 5px;
+      background-color: bisque;
+    }
+
+    .item {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      border-radius: 12px;
+      margin: 2px;
+      background-color: #000;
+    }
+
+    .item:nth-child(2) {
+      align-self: center;
+    }
+
+    .item:nth-child(3) {
+      align-self: flex-end;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <span class="item"></span>
+    <span class="item"></span>
+    <span class="item"></span>
+  </div>
+
+</body>
