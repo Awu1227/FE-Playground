@@ -5,24 +5,31 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>02-margin纵向重叠的问题</title>
-  <!--如下代码，AAA和BBB之间的距离是多少？-->
+  <title>margin纵向重叠的问题</title>
   <style>
     p {
       font-size: 16px;
       line-height: 1;
       margin-top: 10px;
       margin-bottom: 15px;
+      background-color: red;
     }
   </style>
 </head>
 
 <body>
+  <h3>AAA和BBB之间的距离是多少？</h3>
   <p>AAA</p>
   <p></p>
   <p></p>
   <p></p>
   <p>BBB</p>
+
+  <ul>
+    <li>相邻元素的margin-top和margin-bottom会发生重叠</li>
+    <li>空白内容的p标签也会重叠</li>
+    <li>答案：15px</li>
+  </ul>
 </body>
 
 </html>
