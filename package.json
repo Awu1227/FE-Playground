@@ -1,0 +1,14 @@
+{
+  "name": "FE-Playground",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "serve": "http-server --proxy http://localhost:8080"
+  },
+  "repository": "git@github.com:Awu1227/FE-Playground.git",
+  "author": "orange <2497436726@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
