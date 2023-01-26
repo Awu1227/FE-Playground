@@ -86,6 +86,59 @@ class MyPromise {
   }
 }
 
+MyPromise.resolve = function (value) {
+  return new MyPromise((resolve, reject) => {
+    resolve(value);
+  });
+};
+
+MyPromise.reject = function (reason) {
+  return new MyPromise((resolve, reject) => {
+    reject(reason);
+  });
+};
+
+MyPromise.all = function (promiseList = []) {
+  return new Promise((resolve, reject) => {
+    const result = [];
+    const length = promiseList.length;
+    let resolvedCount = 0;
+
+    promiseList.forEach((promise) => {
+      promise
+        .then((data) => {
+          result.push(data);
+
+          resolvedCount++;
+          if (resolvedCount === length) {
+            resolve(result);
+          }
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  });
+};
+
+MyPromise.race = function (promiseList = []) {
+  return new Promise((resolve, reject) => {
+    let resolved = false; // 标记
+    promiseList.forEach((promise) => {
+      promise
+        .then((data) => {
+          if (!resolved) {
+            resolve(data);
+            resolved = true;
+          }
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  });
+};
+
 const p1 = new MyPromise((resolve, reject) => {
   resolve(100);
   // reject(300);
@@ -93,9 +146,34 @@ const p1 = new MyPromise((resolve, reject) => {
 
 console.log(p1);
 
+// promise.then()
 p1.then((res) => {
   console.log(res);
   return res + 1;
 }).then((res) => {
+  console.log(res);
+});
+
+// Promise.resolve()
+const p2 = MyPromise.resolve(100);
+const p3 = MyPromise.reject(200);
+const p4 = MyPromise.resolve(300);
+console.log("p2", p2);
+console.log("p3", p3);
+
+// Promise.all
+const p5 = MyPromise.all([p2, p3]);
+p5.then((res) => {
+  console.log("p5", res);
+});
+
+const p6 = MyPromise.all([p2, p4]);
+p6.then((res) => {
+  console.log("p6", res);
+});
+
+// Promise.race
+const p7 = MyPromise.race([p2, p3]);
+p7.then((res) => {
   console.log(res);
 });
